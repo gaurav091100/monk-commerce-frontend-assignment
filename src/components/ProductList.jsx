@@ -1,7 +1,7 @@
-import { X, Edit2 } from 'lucide-react';
+import { X, Edit2, GripVertical } from 'lucide-react';
 import AddProduct from './AddProduct';
 
-const ProductList = ({ products, onAddProduct, onEditProduct, onRemoveProduct, onToggleVariants, onUpdateDiscount }) => {
+const ProductList = ({ products, onAddProduct, onEditProduct, onRemoveProduct, onToggleVariants, onUpdateDiscount, onDragStart, onDragOver, onDragEnter, onDragLeave, onDrop, draggedItem }) => {
   return (
     <div className="max-w-4xl mx-auto">
       <h1 className="text-2xl font-semibold mb-6">Add Products</h1>
@@ -16,8 +16,16 @@ const ProductList = ({ products, onAddProduct, onEditProduct, onRemoveProduct, o
           <div key={item.id} className="space-y-2" >
             <div
               className="flex items-start gap-4 transition-opacity"
+              draggable
+              onDragStart={(e) => onDragStart(e, index)}
+              onDragOver={onDragOver}
+              onDragEnter={onDragEnter}
+              onDragLeave={onDragLeave}
+              onDrop={(e) => onDrop(e, index)}
+              style={{ opacity: draggedItem?.index === index && draggedItem?.variantIndex === null ? 0.5 : 1 }}
             >
               <div className="flex items-center gap-2 cursor-move">
+                <GripVertical className="w-5 h-5 text-gray-400" />
                 <span className="text-sm font-medium">{index + 1}.</span>
               </div>
 
@@ -102,7 +110,17 @@ const ProductList = ({ products, onAddProduct, onEditProduct, onRemoveProduct, o
               <div
                 key={variant.id}
                 className="flex items-center gap-4 ml-12 transition-opacity"
+                draggable
+                onDragStart={(e) => onDragStart(e, index, vIndex)}
+                onDragOver={onDragOver}
+                onDragEnter={onDragEnter}
+                onDragLeave={onDragLeave}
+                onDrop={(e) => onDrop(e, index, vIndex)}
+                style={{ opacity: draggedItem?.index === index && draggedItem?.variantIndex === vIndex ? 0.5 : 1 }}
               >
+                <div className="flex items-center gap-2 cursor-move">
+                  <GripVertical className="w-4 h-4 text-gray-400" />
+                </div>
 
                 <div className="flex-1">
                   <div className="p-2 border border-gray-300 rounded text-sm bg-white">
