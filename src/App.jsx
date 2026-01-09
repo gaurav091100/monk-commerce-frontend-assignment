@@ -7,91 +7,6 @@ import ProductPicker from "./components/ProductPicker";
 const API_KEY = import.meta.env.VITE_MONK_API_KEY;
 const API_BASE_URL = import.meta.env.VITE_MONK_API_BASE_URL;
 
-
-const dummyAvailableProducts = [
-  {
-    "id": 77,
-    "title": "Fog Linen Chambray Towel - Beige Stripe",
-    "variants": [
-      { "id": 1, "product_id": 77, "title": "XS / Silver", "price": "49" },
-      { "id": 2, "product_id": 77, "title": "S / Silver", "price": "49" },
-      { "id": 3, "product_id": 77, "title": "M / Silver", "price": "49" }
-    ],
-    "image": {
-      "id": 266,
-      "product_id": 77,
-      "src": "https://cdn11.bigcommerce.com/s-p1xcugzp89/products/77/images/266/foglinenbeigestripetowel1b.1647248662.386.513.jpg?c=1"
-    }
-  },
-  {
-    "id": 80,
-    "title": "Orbit Terrarium - Large",
-    "variants": [
-      { "id": 64, "product_id": 80, "title": "Default Title", "price": "109" },
-      { "id": 65, "product_id": 80, "title": "S / Silver", "price": "49" },
-      { "id": 66, "product_id": 80, "title": "M / Silver", "price": "49" }
-    ],
-    "image": {
-      "id": 272,
-      "product_id": 80,
-      "src": "https://cdn11.bigcommerce.com/s-p1xcugzp89/products/80/images/272/roundterrariumlarge.1647248662.386.513.jpg?c=1"
-    }
-  },
-  {
-    "id": 81,
-    "title": "Handcrafted Ceramic Mug – Ocean Blue",
-    "variants": [
-      { "id": 67, "product_id": 81, "title": "12 oz / Glossy", "price": "34" },
-      { "id": 68, "product_id": 81, "title": "16 oz / Matte", "price": "38" },
-      { "id": 69, "product_id": 81, "title": "20 oz / Matte", "price": "42" }
-    ],
-    "image": {
-      "id": 273,
-      "product_id": 81,
-      "src": "https://example.com/images/ceramic-mug-ocean-blue.jpg"
-    }
-  },
-  {
-    "id": 82,
-    "title": "Organic Cotton Throw Blanket – Charcoal",
-    "variants": [
-      { "id": 70, "product_id": 82, "title": "50×60 in", "price": "89" },
-      { "id": 71, "product_id": 82, "title": "60×80 in", "price": "119" }
-    ],
-    "image": {
-      "id": 274,
-      "product_id": 82,
-      "src": "https://example.com/images/organic-cotton-throw-charcoal.jpg"
-    }
-  },
-  {
-    "id": 83,
-    "title": "Minimalist Walnut Desk Lamp",
-    "variants": [
-      { "id": 72, "product_id": 83, "title": "Standard / Warm Light", "price": "129" },
-      { "id": 73, "product_id": 83, "title": "Standard / Cool Light", "price": "129" }
-    ],
-    "image": {
-      "id": 275,
-      "product_id": 83,
-      "src": "https://example.com/images/walnut-desk-lamp.jpg"
-    }
-  },
-  {
-    "id": 84,
-    "title": "Bamboo Cutting Board Set – 3 Pieces",
-    "variants": [
-      { "id": 74, "product_id": 84, "title": "Small / Medium / Large", "price": "59" }
-    ],
-    "image": {
-      "id": 276,
-      "product_id": 84,
-      "src": "https://example.com/images/bamboo-cutting-board-set.jpg"
-    }
-  }
-];
-
-
   const initialProducts = [
     { id: `product-${Date.now()}`, product: null, variants: [], showVariants: false, discount: { type: 'percentage', value: '' } }
   ]
@@ -131,7 +46,7 @@ const App = () => {
       setHasMore(data.length === 10);
     } catch (error) {
       console.error('Error fetching products:', error);
-      setAvailableProducts(dummyAvailableProducts)
+      alert('Error fetching products')
     }
     setLoading(false);
   };
