@@ -67,23 +67,33 @@ const App = () => {
     setIsPickerOpen(true);
     setSearchQuery('');
     setPage(1);
+  // Clear all selected products and variants
+  setSelectedProducts(new Map());
+  fetchProducts('', 1, false);
+};
+
+  // const openPicker = (index) => {
+  //   setEditingIndex(index);
+  //   setIsPickerOpen(true);
+  //   setSearchQuery('');
+  //   setPage(1);
     
-    const currentProduct = products[index];
-    const preSelected = new Map();
+  //   const currentProduct = products[index];
+  //   const preSelected = new Map();
     
-    if (currentProduct.product) {
-      const selectedVariantIds = new Set(
-        currentProduct.variants.map(v => v.originalId || v.id)
-      );
-      preSelected.set(currentProduct.product.id, {
-        ...currentProduct.product,
-        selectedVariants: selectedVariantIds
-      });
-    }
+  //   if (currentProduct.product) {
+  //     const selectedVariantIds = new Set(
+  //       currentProduct.variants.map(v => v.originalId || v.id)
+  //     );
+  //     preSelected.set(currentProduct.product.id, {
+  //       ...currentProduct.product,
+  //       selectedVariants: selectedVariantIds
+  //     });
+  //   }
     
-    setSelectedProducts(preSelected);
-    fetchProducts('', 1, false);
-  };
+  //   setSelectedProducts(preSelected);
+  //   fetchProducts('', 1, false);
+  // };
 
   const handleProductSelect = (product) => {
     const newSelected = new Map(selectedProducts);
